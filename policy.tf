@@ -15,7 +15,7 @@ resource "aws_iam_policy" "policy" {
           "sqs:DeleteMessage"
         ]
         Effect   = "Allow"
-        Resource = "*"
+        Resource = "arn:aws:sqs:*:674565636223:terraform_queue"
       },
     ]
   })
