@@ -11,10 +11,13 @@ resource "aws_iam_policy" "policy" {
       {
         Action = [
           "ec2:Describe*",
+          "sqs:ReceiveMessage",
+          "sqs:DeleteMessage"
         ]
         Effect   = "Allow"
-        Resource = "*"
+        Resource = "arn:aws:sqs:*:YourAccountId:GuardDutySqsQueueNameGoesHere"
       },
     ]
   })
 }
+
