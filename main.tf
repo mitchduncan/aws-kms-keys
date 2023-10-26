@@ -31,7 +31,7 @@ resource "aws_sqs_queue" "terraform_queue" {
   kms_data_key_reuse_period_seconds = 300
 }
 
-resource "aws_iam_policy" "policy" {
+resource "aws_iam_policy" "mypolicy" {
   name        = "test_policy"
   path        = "/"
   description = "My test policy"
