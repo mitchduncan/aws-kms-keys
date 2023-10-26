@@ -30,29 +30,3 @@ resource "aws_sqs_queue" "terraform_queue" {
   kms_master_key_id                 = "alias/aws/sqs"
   kms_data_key_reuse_period_seconds = 300
 }
-
-resource "aws_iam_policy" "mypolicy" {
-  name        = "test_policy"
-  path        = "/"
-  description = "My test policy"
-
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
-  policy = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Effect" : "Allow",
-        "Action" : [
-          "sqs:ReceiveMessage",
-          "sqs:DeleteMessage"
-        ],
-        "Resource" : [
-          "arn:aws:sqs:*:YourAccountId:terraform_queue"
-        ]
-      }
-    ]
-  })
-}
-
-
